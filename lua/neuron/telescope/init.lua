@@ -4,6 +4,7 @@ local finders = require("telescope.finders")
 local previewers = require("telescope.previewers")
 local conf = require("telescope.config").values
 local actions = require("telescope.actions")
+local action_set = require('telescope.actions.set')
 local utils = require("neuron/utils")
 local cmd = require("neuron/cmd")
 local neuron_actions = require("neuron/telescope/actions")
@@ -27,14 +28,13 @@ function M.find_zettels(opts)
     }
 
     if opts.insert then
-      picker_opts.attach_mappings = function()
-        actions.select_default:replace(
-            neuron_actions.insert_maker("id"))
+      picker_opts.attach_mappings = function(_, map)
+        map('i', '<cr>', neuron_actions.insert_maker("id"))
         return true
       end
     else
-      picker_opts.attach_mappings = function()
-        actions.select_default:replace(neuron_actions.edit_or_insert)
+      picker_opts.attach_mappings = function(_, map)
+        map('i', '<cr>', neuron_actions.edit_or_insert)
         return true
       end
     end
@@ -63,9 +63,8 @@ function M.find_backlinks(opts)
     }
 
     if opts.insert then
-      picker_opts.attach_mappings = function()
-        actions.select_default:replace(
-            neuron_actions.insert_maker("id"))
+      picker_opts.attach_mappings = function(_, map)
+        map('i', '<cr>', neuron_actions.insert_maker("id"))
         return true
       end
     end
@@ -86,9 +85,8 @@ function M.find_tags(opts)
       },
       previewer = nil,
       sorter = conf.generic_sorter(opts),
-      attach_mappings = function()
-        actions.select_default:replace(
-            neuron_actions.insert_maker("display"))
+      attach_mappings = function(_, map)
+        map('i', '<cr>', neuron_actions.insert_maker("display"))
         return true
       end
     }
