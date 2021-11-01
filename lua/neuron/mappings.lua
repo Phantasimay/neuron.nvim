@@ -4,12 +4,12 @@ local config = require("neuron/config")
 local M = {}
 
 function M.map_buf(key, rhs)
-  local lhs = string.format("%s%s", config.leader, key)
+  local lhs = string.format("%s%s", '<leader>n', key)
   api.nvim_buf_set_keymap(0, "n", lhs, rhs, {noremap = true, silent = true})
 end
 
 function M.map(key, rhs)
-  local lhs = string.format("%s%s", config.leader, key)
+  local lhs = string.format("%s%s", '<leader>n', key)
   api.nvim_set_keymap("n", lhs, rhs, {noremap = true, silent = true})
 end
 
@@ -35,7 +35,7 @@ end
 
 ---setup the keymappings
 function M.setup()
-  vim.cmd(string.format("au BufRead %s/*.md lua require'neuron/mappings'.set_keymaps()", config.neuron_dir))
+  M.set_keymaps()
   M.map("i", "<cmd>lua require'neuron'.goto_index()<CR>")
 end
 
