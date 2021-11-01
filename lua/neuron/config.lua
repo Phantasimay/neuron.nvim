@@ -39,7 +39,7 @@ return setmetatable({
   mappings = true,
   virtual_titles = true,
   run = function() end,
-  leader = "gz", -- the leader key to for all mappings
+  leader = "<leader>", -- the leader key to for all mappings
   gen_cache_on_write = true,
   virt_text_highlight = "Comment",
 }, Config)

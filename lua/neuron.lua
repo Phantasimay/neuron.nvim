@@ -17,6 +17,8 @@ function M.rib(opts)
   opts = opts or {}
   opts.address = opts.address or "127.0.0.1:8200"
 
+  local page = vim.fn.expand('%:t:r')
+
   NeuronJob = Job:new{
     command = "neuron",
     cwd = config.neuron_dir,
@@ -37,7 +39,7 @@ function M.rib(opts)
     print("Started neuron server at", opts.address)
   end
 
-  local open_address = utils.get_localhost_address(opts.address)
+  local open_address = utils.get_localhost_address(opts.address .. '/' .. page)
 
   utils.os_open(open_address)
 end
