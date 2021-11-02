@@ -19,8 +19,8 @@ function M.set_keymaps()
 
   M.map("n", "<cmd>lua require'neuron/cmd'.new_edit(require'neuron/config'.neuron_dir)<CR>")
 
-  M.map("z", "<cmd>lua require'neuron/telescope'.find_zettels()<CR>")
-  M.map("Z", "<cmd>lua require'neuron/telescope'.find_zettels {insert = true}<CR>")
+  M.map("f", "<cmd>lua require'neuron/telescope'.find_zettels()<CR>")
+  M.map("F", "<cmd>lua require'neuron/telescope'.find_zettels {insert = true}<CR>")
 
   M.map("b", "<cmd>lua require'neuron/telescope'.find_backlinks()<CR>")
   M.map("B", "<cmd>lua require'neuron/telescope'.find_backlinks {insert = true}<CR>")
