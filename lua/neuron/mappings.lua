@@ -4,12 +4,12 @@ local config = require("neuron/config")
 local M = {}
 
 function M.map_buf(key, rhs)
-  local lhs = string.format("%s%s", '<leader>n', key)
+  local lhs = string.format("%s%s", '<leader>', key)
   api.nvim_buf_set_keymap(0, "n", lhs, rhs, {noremap = true, silent = true})
 end
 
 function M.map(key, rhs)
-  local lhs = string.format("%s%s", '<leader>n', key)
+  local lhs = string.format("%s%s", '<leader>', key)
   api.nvim_set_keymap("n", lhs, rhs, {noremap = true, silent = true})
 end
 
@@ -19,8 +19,8 @@ function M.set_keymaps()
 
   M.map("nn", "<cmd>lua require'neuron/cmd'.new_edit(require'neuron/config'.neuron_dir)<CR>")
 
-  M.map("nz", "<cmd>lua require'neuron/telescope'.find_zettels()<CR>")
-  M.map("nZ", "<cmd>lua require'neuron/telescope'.find_zettels {insert = true}<CR>")
+  M.map("nf", "<cmd>lua require'neuron/telescope'.find_zettels()<CR>")
+  M.map("nF", "<cmd>lua require'neuron/telescope'.find_zettels {insert = true}<CR>")
 
   M.map("nb", "<cmd>lua require'neuron/telescope'.find_backlinks()<CR>")
   M.map("nB", "<cmd>lua require'neuron/telescope'.find_backlinks {insert = true}<CR>")
