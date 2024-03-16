@@ -30,8 +30,6 @@ M.goto_index()                                                *M.goto_index()*
 
 
 ================================================================================
-M.setup()                                                          *M.setup()*
-    setup the keymappings
 
 
 
